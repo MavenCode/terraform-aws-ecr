@@ -3,7 +3,6 @@ resource "aws_ecr_repository" "container_repo" {
 
   encryption_configuration {
     encryption_type = var.encryption_type
-    // Key value management(KMS) can be used for custom security
   }
   image_tag_mutability = "MUTABLE"
   image_scanning_configuration {
@@ -31,7 +30,12 @@ resource "aws_ecr_registry_policy" "policy" {
           "arn:${data.aws_partition.current.partition}:ecr:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:repository/*"
         ],
         Action = [
-          "ecr:*"
+          "ecr:DescribeRegistry",
+          "ecr:CreateRepository",
+          "ecr:ReplicateImage",
+          "ecr:StartImageScan",
+          "ecr:PutImage",
+          "ecr:ListImages",
         ]
       }
     ]
