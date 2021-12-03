@@ -1,0 +1,23 @@
+{
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid"    : "ecrpolicy",
+        "Effect" : "Allow",
+        "Principal" : {
+          "AWS" : "arn:${current_partition}:iam::${caller_identity}:root"
+        },
+        "Resource" : [
+          "arn:${current_partition}:ecr:${aws_region}:${caller_identity}:repository/*"
+        ],
+        "Action" : [
+          "ecr:DescribeRegistry",
+          "ecr:CreateRepository",
+          "ecr:ReplicateImage",
+          "ecr:StartImageScan",
+          "ecr:PutImage",
+          "ecr:ListImages"
+        ]
+      }
+    ]
+  }

@@ -1,10 +1,10 @@
 module "ecr_registry" {
   source = "https://github.com/MavenCode/terraform-aws-ecr"
-
   repo_name       = var.repo_name_test
   acess_key       = var.access_key
   secret_key      = var.secret_key
   region          = var.region
+  policy          = var.policy
   encryption_type = var.encryption_type
   image_push_scan = var.scan_on_push
 

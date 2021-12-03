@@ -22,6 +22,10 @@ variable "region" {
   default     = "us-west-1"
 }
 
+variable "policy" {
+  default = "default-policy.json"
+}
+
 variable "encryption_type" {
   description = "KMS or AES256 registry encryption technique"
   # Key value management(KMS) can be used for custom security

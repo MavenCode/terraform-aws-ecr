@@ -17,34 +17,23 @@ resource "aws_ecr_repository" "container_repo" {
 }
 
 resource "aws_ecr_registry_policy" "policy" {
-  policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Sid    = "ecrpolicy",
-        Effect = "Allow",
-        Principal = {
-          "AWS" : "arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
-        },
-        Resource = [
-          "arn:${data.aws_partition.current.partition}:ecr:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:repository/*"
-        ],
-        Action = [
-          "ecr:DescribeRegistry",
-          "ecr:CreateRepository",
-          "ecr:ReplicateImage",
-          "ecr:StartImageScan",
-          "ecr:PutImage",
-          "ecr:ListImages",
-        ]
-      }
-    ]
-
-  })
+  policy = data.template_file.ecr_policy_vars.rendered
 }
 
-# generate uuid prepended to entered or default repo name for uniqueness
+# generate uuid appended to entered or default repo name for uniqueness
 resource "random_uuid" "contname_suffix_id" {}
+
+# policy separation and template implementation
+data "template_file" "ecr_policy_vars" {
+  template = "${file("./${var.policy}")}"
+
+  vars = {
+    current_partition = "${data.aws_partition.current.partition}"
+    caller_identity = "${data.aws_caller_identity.current.account_id}"
+    aws_region = "${data.aws_region.current.name}"
+    
+  }
+}
 
 # aws IAM user id
 data "aws_caller_identity" "current" {}
