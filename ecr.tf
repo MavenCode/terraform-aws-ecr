@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "container_repo" {
-  name = "${var.repo_name}-${random_uuid.contname_suffix_id.result}"
+  name = var.repo_name
 
   encryption_configuration {
     encryption_type = var.encryption_type
@@ -43,9 +43,6 @@ resource "aws_ecr_registry_policy" "policy" {
 }
 POLICY
 }
-
-# generate uuid prepended to entered or default repo name for uniqueness
-resource "random_uuid" "contname_suffix_id" {}
 
 # aws IAM user id
 data "aws_caller_identity" "current" {}
