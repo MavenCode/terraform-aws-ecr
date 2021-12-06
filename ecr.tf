@@ -20,7 +20,7 @@ resource "aws_ecr_repository" "container_repo" {
 resource "aws_ecr_registry_policy" "policy" {
   policy = <<POLICY
 {
-  "Version": "2012-10-17,
+  "Version": "2012-10-17",
   "Statement": [
     {
         "Sid": "ecr_policy",
