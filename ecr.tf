@@ -35,7 +35,7 @@ resource "aws_ecr_registry_policy" "policy" {
             "ecr:ReplicateImage",
             "ecr:StartImageScan",
             "ecr:PutImage",
-            "ecr:ListImages",
+            "ecr:ListImages"
         ]
     }
   ]  
