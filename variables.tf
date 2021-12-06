@@ -3,16 +3,6 @@ variable "repo_name" {
   default     = "dev-image"
 }
 
-variable "access_key" {
-  description = "aws access key"
-  default     = "null"
-}
-
-variable "secret_key" {
-  description = "aws secret key"
-  default     = "null"
-}
-
 variable "region" {
   description = "aws region"
   default     = "us-west-1"
