@@ -18,32 +18,7 @@ resource "aws_ecr_repository" "container_repo" {
 }
 
 resource "aws_ecr_registry_policy" "policy" {
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-        "Sid": "${var.repo_name}",
-        "Effect": "Allow",
-        "Principal": {
-          "AWS" : "arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:root"
-        },
-        "Resource": [
-            "arn:${data.aws_partition.current.partition}:ecr:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:repository/*"
-        ],
-        "Action": [
-            "ecr:DescribeRegistry",
-            "ecr:CreateRepository",
-            "ecr:ReplicateImage",
-            "ecr:StartImageScan",
-            "ecr:PutImage",
-            "ecr:ListImages"
-        ]
-    }
-  ]  
-
-}
-POLICY
+  policy = var.policy
 }
 
 # aws IAM user id
