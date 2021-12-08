@@ -29,3 +29,9 @@ variable "env_name" {
   description = "tags value working env: dev, prod or test"
   default     = "dev"
 }
+
+variable "policy" {
+  description = "ecr policy"
+  type        = string
+  default     = "{}"
+}
