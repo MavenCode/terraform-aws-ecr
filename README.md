@@ -6,6 +6,8 @@ This is a template repository that can be re-used when provisioning amazon elast
 
 On flexible build, a default default-policy.json file is provided with this module, allowing for viable aes module deployment using this policy definition. And a custom policy can be imported as a .json manifest passed to the module's "policy" input argument.
 
+**_Update: module no longer provisions provider. Parent module must implement suitable provider._**
+
 See below for user provided variables to customize sqs deployment. Also available in the variables.tf file with the variable type expected.
 
 | Input variables   | Description                                                                                            |

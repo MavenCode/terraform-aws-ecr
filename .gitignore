@@ -28,5 +28,6 @@ override.tf.json
 # Include tfplan files 
 
 .DS_Store
-
+*tf*plan*
+provider.tf
 .terraform.lock.hcl

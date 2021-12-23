@@ -25,7 +25,7 @@ resource "random_uuid" "contname_suffix_id" {}
 
 # policy separation and template implementation
 data "template_file" "ecr_policy_vars" {
-  template = "${file("./${var.policy}")}"
+  template = "${file("${path.module}/${var.policy}")}"
 
   vars = {
     current_partition = "${data.aws_partition.current.partition}"

@@ -11,12 +11,7 @@
           "arn:${current_partition}:ecr:${aws_region}:${caller_identity}:repository/*"
         ],
         "Action" : [
-          "ecr:DescribeRegistry",
-          "ecr:CreateRepository",
-          "ecr:ReplicateImage",
-          "ecr:StartImageScan",
-          "ecr:PutImage",
-          "ecr:ListImages"
+          "ecr:*"
         ]
       }
     ]

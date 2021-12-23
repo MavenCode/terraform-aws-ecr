@@ -4,23 +4,23 @@ variable "repo_name" {
   default     = "dev-image"
 }
 
-variable "access_key" {
-  description = "aws access key"
-  type        = string
-  default     = "null"
-}
+# variable "access_key" {
+#   description = "aws access key"
+#   type        = string
+#   default     = "null"
+# }
 
-variable "secret_key" {
-  description = "aws secret key"
-  type        = string
-  default     = "null"
-}
+# variable "secret_key" {
+#   description = "aws secret key"
+#   type        = string
+#   default     = "null"
+# }
 
-variable "region" {
-  description = "aws region"
-  type        = string
-  default     = "us-west-1"
-}
+# variable "region" {
+#   description = "aws region"
+#   type        = string
+#   default     = "us-west-1"
+# }
 
 variable "policy" {
   default = "default-policy.json"
@@ -36,7 +36,7 @@ variable "encryption_type" {
 variable "image_push_scan" {
   description = "bool val to flag whether images pushed to registry is auto-scanned or manually"
   # Required
-  type    = string
+  type    = bool
   default = true
 }
 
